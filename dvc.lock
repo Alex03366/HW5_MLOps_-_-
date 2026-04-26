@@ -1,0 +1,60 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python prepare.py
+    deps:
+    - path: data/raw/iris.csv
+      hash: md5
+      md5: 306bb72b2c70bf0b0eeab9e76ac755a0
+      size: 3858
+    - path: prepare.py
+      hash: md5
+      md5: 072dab3695f3c93110472931a279581c
+      size: 756
+    params:
+      params.yaml:
+        data.random_state: 42
+        data.test_size: 0.2
+    outs:
+    - path: data/processed/X_test.csv
+      hash: md5
+      md5: 9d9a4edbf22c080ea9430174a7f6ab2e
+      size: 530
+    - path: data/processed/X_train.csv
+      hash: md5
+      md5: f2b4ba4edb7e5c873d9ad839f3f443f1
+      size: 1970
+    - path: data/processed/y_test.csv
+      hash: md5
+      md5: d3b031b5c73ebf1ee547116fc27218af
+      size: 288
+    - path: data/processed/y_train.csv
+      hash: md5
+      md5: 37c045848e4710edd3e031a4cd24608a
+      size: 1128
+  train:
+    cmd: python train.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: c3ab27781082572d2f75036a972bd0c4.dir
+      size: 3916
+      nfiles: 4
+    - path: train.py
+      hash: md5
+      md5: a8179c15dabb836950f16b695175b0fb
+      size: 1197
+    params:
+      params.yaml:
+        model.C: 1.0
+        model.max_iter: 1000
+        model.random_state: 42
+    outs:
+    - path: accuracy.txt
+      hash: md5
+      md5: 089fc8a5dcd973b3d8b22aaacf59306f
+      size: 18
+    - path: models/model.pkl
+      hash: md5
+      md5: dd774998c65eb66c17ce0a640ac73a46
+      size: 959

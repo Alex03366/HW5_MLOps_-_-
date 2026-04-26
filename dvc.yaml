@@ -1,0 +1,27 @@
+stages:
+  prepare:
+    cmd: python prepare.py
+    deps:
+    - data/raw/iris.csv
+    - prepare.py
+    params:
+    - data.random_state
+    - data.test_size
+    outs:
+    - data/processed/X_test.csv
+    - data/processed/X_train.csv
+    - data/processed/y_test.csv
+    - data/processed/y_train.csv
+  train:
+    cmd: python train.py
+    deps:
+    - data/processed
+    - train.py
+    params:
+    - model.C
+    - model.max_iter
+    - model.random_state
+    outs:
+    - models/model.pkl
+    metrics:
+    - accuracy.txt
