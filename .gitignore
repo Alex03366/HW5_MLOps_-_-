@@ -1,20 +1,20 @@
-
-data/raw/*.csv
+# Данные (НЕ в Git, только в DVC)
+data/raw/iris.csv
 data/processed/
-models/*.pkl
-mlruns/
-mlflow.db
 
+# Видео и временные файлы
 *.mp4
 *.gif
-*.xml
 *.png
+*.xml
 energydata_complete_v1.csv
 
+# Папки
 .config/
 sample_data/
 local_repo/
+mlruns/
+mlflow.db
 
-!.gitignore
-!data/raw/.gitignore
-!data/raw/iris.csv.dvc
+# Модели
+models/*.pkl

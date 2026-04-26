@@ -1,0 +1,25 @@
+cmd: python train.py
+deps:
+- path: data/processed
+  hash: md5
+  md5: c3ab27781082572d2f75036a972bd0c4.dir
+  size: 3916
+  nfiles: 4
+- path: train.py
+  hash: md5
+  md5: a8179c15dabb836950f16b695175b0fb
+  size: 1197
+params:
+  params.yaml:
+    model.C: 1.0
+    model.max_iter: 1000
+    model.random_state: 42
+outs:
+- path: accuracy.txt
+  hash: md5
+  md5: 089fc8a5dcd973b3d8b22aaacf59306f
+  size: 18
+- path: models/model.pkl
+  hash: md5
+  md5: dd774998c65eb66c17ce0a640ac73a46
+  size: 959
